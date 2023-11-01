@@ -34,3 +34,22 @@ Once Java is installed, we need to navigate to the kafka folder and then start t
 
 1. cd kafka_2.12-3.3.1
 
+# Run Zookeeper service
+
+    bin/zookeeper-server-start.sh config/zookeeper.properties
+
+1. bin/zookeeper-server-start.sh --> command to start the zookeeper service
+2. config/zookeeper.properties --> config file that runs the service and holds secret keys.
+
+# Run Kafka server
+
+Open a new terminal and run the Kafka server. But first ssh to to your ec2 machine as done above. Since we are running our Kafka server on a single EC2 
+instance, we will set the memory of the server and for that execute the following command:
+
+    export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
+
+    bin/kafka-server-start.sh config/server.properties
+1. bin/kafka-server-start.sh: Run the kafka server
+2. config/server.properties: Config files
+
+
