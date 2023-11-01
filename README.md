@@ -1,6 +1,10 @@
 # realtime-DataIngestion
 This repository uses AWS cloud services and Big Data technologies to process data in real time and archive data in data lake storage 
 
+# Architecture of the project
+
+![Alt text](Architecture.jpg)
+
 # AWS setup
 
 We created a free-tier account on AWS. Then performed the following activities:
@@ -58,9 +62,31 @@ send data for real-time processing. This is because the DNS on which the kafka i
 1. Stop the zookeeper and kafka server
 2. Run the following command:
     sudo nano config/server.properties
+
 This will open the properties file.
+
 3. change ADVERTISED_LISTENERS to public ip of the EC2 instance
 
+Re-run the zookeper and kafka server.
+
+Now, we will also need to edit security inbound rules. Hence navigate to the Security section of the instance. Click on the security Groups and click on edit inbound rules. After that add another rule, "Allow all traffic" through "Anywhere with IPv4".
+
+Usually this will be handled by the DevOps engineer.
+
+# Create the topic:
+
+cd kafka_2.12-3.3.1
+bin/kafka-topics.sh --create --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092} --replication-factor 1 --partitions 1
+
+# Start the Producer
+
+bin/kafka-console-producer.sh --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092} 
+
+# Start the Consumer
+
+Duplicate the session & enter in a new console --
+cd kafka_2.12-3.3.1
+bin/kafka-console-consumer.sh --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092}
 
 
 
