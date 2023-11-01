@@ -52,4 +52,15 @@ instance, we will set the memory of the server and for that execute the followin
 1. bin/kafka-server-start.sh: Run the kafka server
 2. config/server.properties: Config files
 
+But there is an issue with this approach. Although both our zookeeper and kafka server are running but we won't be able to connect to our Kafka server to 
+send data for real-time processing. This is because the DNS on which the kafka is running, it's on private server. And we will be working on local machine. Hence we need to change the ip address to a public ip address. To do this, perform the following actions:
+
+1. Stop the zookeeper and kafka server
+2. Run the following command:
+    sudo nano config/server.properties
+This will open the properties file.
+3. change ADVERTISED_LISTENERS to public ip of the EC2 instance
+
+
+
 
