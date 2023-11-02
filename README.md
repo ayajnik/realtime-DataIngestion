@@ -88,5 +88,13 @@ Duplicate the session & enter in a new console --
 cd kafka_2.12-3.3.1
 bin/kafka-console-consumer.sh --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092}
 
+# Create S3 bucker
+
+1. pip3 install s3fd
+2. Login into your AWS console
+3. Search for S3 resource
+4. Give your bucket a name
+5. Click on create bucket
+
 
 
