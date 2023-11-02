@@ -96,5 +96,21 @@ bin/kafka-console-consumer.sh --topic demo_testing2 --bootstrap-server {Put the 
 4. Give your bucket a name
 5. Click on create bucket
 
+# Configure Local machine to AWS console
+
+In order to send data from local machine to AWS console (like S3 instance) we need to configure AWS access key and secret key. For that, we need to add a user through the IAM portal in our AWS console.
+
+1. Login into AWS console
+2. Navigate to IAM
+3. Inside Access Management, click on Users and then click on Add Users
+4. Give your user a name
+5. Then click the "Provide user access to the AWS Management Console - optional" option
+6. Then select "I want to create an IAM user" to give access to the user programatically
+7. After clicking next, we need to give permissions to the user. Select "Attach policies directly" and then click on "Administrative Access".
+8. You can then download a csv file that contains your credentials.
+9. Go to your terminal, and write aws configure. Provide your access and secret key ID.
+
+
+
 
 
