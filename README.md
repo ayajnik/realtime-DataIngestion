@@ -110,6 +110,24 @@ In order to send data from local machine to AWS console (like S3 instance) we ne
 8. You can then download a csv file that contains your credentials.
 9. Go to your terminal, and write aws configure. Provide your access and secret key ID.
 
+# Create a crawler to move data from S3 to AWS Athena
+
+1. In your AWS console, search for AWS crawler and create a new crawler
+2. Click on Create Crawler
+3. Give a unique name to the crawler
+4. Then we need to add a data source, i.e., from where we want to copy our data from.
+5. Select S3 as data source. Then give the path of the S3 bucket. Make sure you need to add '/' at the end of the S3 path. 
+6. Now we need to create another IAM user to give access glue to S3. Hence, go to IAM, click on roles and then create roles.
+7. Select AWS service and then search for Glue.
+8. Give Admin access to the glue.
+9. Give access to the IAM service.
+10. Now, navigate back to Glue Crawler creation. We also need to create a new database for Athena so we will click on Add new database.
+11. Give db name and click on Next
+12. Then click on Create Crawler. Once you create the crawler, select the crawler you craeted and then click on "Run" to run your crawler.
+13. Now since Athena is based on RDBMS, we know that there are transactional logs that are created and there might be a sscenario where your query might not run. Hence, to store that those temporary logs, you might need to creare a new bucket. 
+14. To overcome the issue discussed in the above point, in the Athena query window, click on "Settings", click on Manage, give the path to a bucket that can store the temporary logs. Then click on save.
+
+
 
 
 
